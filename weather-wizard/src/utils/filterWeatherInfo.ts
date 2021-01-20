@@ -33,6 +33,7 @@ export const filterWeatherInfo = (response: responseObject) => {
     current: response.main.temp,
     max: response.main.temp_max,
     min: response.main.temp_min,
+    feels: response.main.feels_like,
   };
   const locationName: object = {
     city: response.name,

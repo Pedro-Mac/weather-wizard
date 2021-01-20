@@ -37,8 +37,9 @@
       align-items: center;
 
       .degrees-highlight {
-        font-size: 3rem;
+        font-size: 3.5rem;
         margin-left: 0.5rem;
+        font-weight: 400;
       }
     }
 
@@ -47,6 +48,7 @@
       .weather-specs-item {
         text-align: end;
         margin: 0.25rem 0;
+        font-size: 0.75rem;
       }
     }
   }

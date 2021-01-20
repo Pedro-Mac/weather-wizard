@@ -1,26 +1,26 @@
 import { SET_LOCATION } from "./actions";
 
-interface actionType {
-  type: string;
-  payload: {
-    date: string;
-    weather: string;
-    temperature: { current: number; min: number; max: number; feels: number };
-    locationName: { city: string; country: string };
-  };
-}
+import { actionType, stateType } from "./types";
 
-export const locationReducer = (state: {} = {}, action: actionType) => {
+const initialState = {
+  date: "",
+  weather: "",
+  temperature: { current: 0, min: 0, max: 0, feels: 0 },
+  locationName: { city: "", country: "" },
+};
+
+export const locationReducer = (
+  state: stateType = initialState,
+  action: actionType,
+) => {
   switch (action.type) {
     case SET_LOCATION:
       return {
         ...state,
-        weatherInfo: {
-          date: action.payload.date,
-          weather: action.payload.weather,
-          temperature: action.payload.temperature,
-          locationName: action.payload.locationName,
-        },
+        date: action.payload.date,
+        weather: action.payload.weather,
+        temperature: action.payload.temperature,
+        locationName: action.payload.locationName,
       };
     default:
       return state;
