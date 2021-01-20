@@ -16,12 +16,8 @@ const App: React.FC = () => {
       const lat = location.coords.latitude;
       const lon = location.coords.longitude;
 
-      //should update state with user's location, should update state with SELCTED location and, from the selected location, display the weather info
-
       getWeatherInfo(lat, lon).then((info) => {
         const { data } = info;
-        console.log(data);
-
         const weatherInfoToState = filterWeatherInfo(data);
         dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
       });
@@ -29,11 +25,22 @@ const App: React.FC = () => {
     [dispatch],
   );
 
+  const handleUnsuccessfulUserLocation = useCallback(() => {
+    getWeatherInfo(39.74362, -8.80705).then((info) => {
+      const { data } = info;
+
+      const weatherInfoToState = filterWeatherInfo(data);
+      console.log(weatherInfoToState);
+      dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
+    });
+  }, [dispatch]);
+
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
       handleSuccessfulUserLocation,
+      handleUnsuccessfulUserLocation,
     );
-  }, [handleSuccessfulUserLocation]);
+  }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation]);
   return <div className="App">hello world</div>;
 };
 
