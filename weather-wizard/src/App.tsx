@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 
 import "./App.scss";
 
 const App: React.FC = () => {
-  console.log(process.env.REACT_APP_TEST);
+  const handleSuccessfulUserLocation = useCallback((location) => {
+    console.log(location.coords);
+    console.log(Math.round(location.coords.latitude));
+    console.log(Math.round(location.coords.longitude));
+  }, []);
+
+  useEffect(() => {
+    window.navigator.geolocation.getCurrentPosition(
+      handleSuccessfulUserLocation,
+    );
+  }, [handleSuccessfulUserLocation]);
   return <div className="App">hello world</div>;
 };
 
