@@ -1,12 +1,14 @@
 import React, { useEffect, useCallback } from "react";
 
+import { getWeatherInfo } from "./services/getWeatherInfo";
+
 import "./App.scss";
 
 const App: React.FC = () => {
   const handleSuccessfulUserLocation = useCallback((location) => {
-    console.log(location.coords);
-    console.log(Math.round(location.coords.latitude));
-    console.log(Math.round(location.coords.longitude));
+    const lat = Math.round(location.coords.latitude);
+    const lon = Math.round(location.coords.longitude);
+    getWeatherInfo(lat, lon).then((info) => console.log(info.data));
   }, []);
 
   useEffect(() => {
