@@ -6,6 +6,8 @@ import { filterWeatherInfo } from "./utils/filterWeatherInfo";
 
 import { SET_LOCATION } from "./redux/location/actions";
 
+import CurrentWeather from "./containers/CurrentWeather";
+
 import "./App.scss";
 
 const App: React.FC = () => {
@@ -17,8 +19,7 @@ const App: React.FC = () => {
       const lon = location.coords.longitude;
 
       getWeatherInfo(lat, lon).then((info) => {
-        const { data } = info;
-        const weatherInfoToState = filterWeatherInfo(data);
+        const weatherInfoToState = filterWeatherInfo(info.data);
         dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
       });
     },
@@ -27,10 +28,7 @@ const App: React.FC = () => {
 
   const handleUnsuccessfulUserLocation = useCallback(() => {
     getWeatherInfo(39.74362, -8.80705).then((info) => {
-      const { data } = info;
-
-      const weatherInfoToState = filterWeatherInfo(data);
-      console.log(weatherInfoToState);
+      const weatherInfoToState = filterWeatherInfo(info.data);
       dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
     });
   }, [dispatch]);
@@ -41,7 +39,11 @@ const App: React.FC = () => {
       handleUnsuccessfulUserLocation,
     );
   }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation]);
-  return <div className="App">hello world</div>;
+  return (
+    <div className="App">
+      <CurrentWeather />
+    </div>
+  );
 };
 
 export default App;
