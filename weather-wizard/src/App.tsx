@@ -1,8 +1,11 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import { getWeatherInfo } from "./services/getWeatherInfo";
-import { filterWeatherInfo } from "./utils/filterWeatherInfo";
+import {
+  getCurrentWeatherInfo,
+  getForecastWeatherInfo,
+  getWeatherInfo,
+} from "./services/weatherInfo/getWeatherInfo";
 
 import { SET_LOCATION } from "./redux/location/actions";
 
@@ -13,32 +16,27 @@ import "./App.scss";
 const App: React.FC = () => {
   const dispatch = useDispatch();
 
-  const handleSuccessfulUserLocation = useCallback(
-    (location) => {
-      const lat = location.coords.latitude;
-      const lon = location.coords.longitude;
+  const handleSuccessfulUserLocation = useCallback(async (location) => {
+    const lat = location.coords.latitude;
+    const lon = location.coords.longitude;
 
-      getWeatherInfo(lat, lon).then((info) => {
-        const weatherInfoToState = filterWeatherInfo(info.data);
-        dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
-      });
-    },
-    [dispatch],
-  );
+    const weather = await getWeatherInfo(lat, lon);
+    console.log(weather);
+  }, []);
 
-  const handleUnsuccessfulUserLocation = useCallback(() => {
-    getWeatherInfo(39.74362, -8.80705).then((info) => {
-      const weatherInfoToState = filterWeatherInfo(info.data);
-      dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
-    });
-  }, [dispatch]);
+  // const handleUnsuccessfulUserLocation = useCallback(() => {
+  //   getCurrentWeatherInfo(39.74362, -8.80705).then((info) => {
+  //     const weatherInfoToState = filterWeatherInfo(info.data);
+  //     dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
+  //   });
+  // }, [dispatch]);
 
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
       handleSuccessfulUserLocation,
-      handleUnsuccessfulUserLocation,
+      // handleUnsuccessfulUserLocation,
     );
-  }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation]);
+  }, [handleSuccessfulUserLocation]);
   return (
     <div className="App">
       <CurrentWeather />

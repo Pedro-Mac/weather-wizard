@@ -1,6 +1,4 @@
 export const modifyDate = () => {
-  console.log(new Date().toString());
-
   let [weekDay, month, day, year, time] = new Date().toString().split(" ");
   //Get hour and minutes
   time = time.slice(0, 5);
