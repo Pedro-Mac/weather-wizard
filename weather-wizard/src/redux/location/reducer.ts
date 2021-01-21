@@ -1,4 +1,4 @@
-import { SET_LOCATION } from "./actions";
+import { SET_WEATHER_INFO } from "./actions";
 
 import { actionType, stateType } from "./types";
 
@@ -16,7 +16,7 @@ export const locationReducer = (
   action: actionType,
 ) => {
   switch (action.type) {
-    case SET_LOCATION:
+    case SET_WEATHER_INFO:
       return {
         ...state,
         currentWeather: {
@@ -25,7 +25,7 @@ export const locationReducer = (
           temperature: action.payload.current.temperature,
           locationName: action.payload.current.locationName,
         },
-        forecast: action.payload.forecast,
+        forecastWeather: action.payload.forecast,
       };
     default:
       return state;

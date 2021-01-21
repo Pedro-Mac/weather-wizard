@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { weatherInfoType } from "./types";
+import { weatherInfoType } from "../types";
 import { modifyDate } from "./helpers";
 
 import "./style.scss";

@@ -1,1 +1,1 @@
-export const SET_LOCATION: string = "AUTORIZE_LOCATION";
+export const SET_WEATHER_INFO: string = "SET_WEATHER_INFO";

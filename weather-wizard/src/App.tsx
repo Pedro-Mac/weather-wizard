@@ -3,9 +3,10 @@ import { useDispatch } from "react-redux";
 
 import { getWeatherInfo } from "./services/weatherInfo/getWeatherInfo";
 
-import { SET_LOCATION } from "./redux/location/actions";
+import { SET_WEATHER_INFO } from "./redux/location/actions";
 
 import CurrentWeather from "./containers/CurrentWeather";
+import ForecastWeather from "./containers/ForecastWeather";
 
 import "./App.scss";
 
@@ -19,14 +20,14 @@ const App: React.FC = () => {
 
       const weather = await getWeatherInfo(lat, lon);
 
-      dispatch({ type: SET_LOCATION, payload: weather });
+      dispatch({ type: SET_WEATHER_INFO, payload: weather });
     },
     [dispatch],
   );
 
   const handleUnsuccessfulUserLocation = useCallback(async () => {
     const weather = await getWeatherInfo(39.74362, -8.80705);
-    dispatch({ type: SET_LOCATION, payload: weather });
+    dispatch({ type: SET_WEATHER_INFO, payload: weather });
   }, [dispatch]);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <CurrentWeather />
+      <ForecastWeather />
     </div>
   );
 };
