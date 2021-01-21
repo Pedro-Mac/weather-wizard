@@ -3,10 +3,12 @@ import { SET_LOCATION } from "./actions";
 import { actionType, stateType } from "./types";
 
 const initialState = {
-  date: "",
-  weather: "",
-  temperature: { current: 0, min: 0, max: 0, feels: 0 },
-  locationName: { city: "", country: "" },
+  currentWeather: {
+    date: "",
+    weather: "",
+    temperature: { current: 0, min: 0, max: 0, feels: 0 },
+    locationName: { city: "", country: "" },
+  },
 };
 
 export const locationReducer = (
@@ -15,12 +17,15 @@ export const locationReducer = (
 ) => {
   switch (action.type) {
     case SET_LOCATION:
+      console.log(action.payload);
       return {
         ...state,
-        date: action.payload.date,
-        weather: action.payload.weather,
-        temperature: action.payload.temperature,
-        locationName: action.payload.locationName,
+        currentWeather: {
+          date: action.payload.current.date,
+          weather: action.payload.current.weather,
+          temperature: action.payload.current.temperature,
+          locationName: action.payload.current.locationName,
+        },
       };
     default:
       return state;

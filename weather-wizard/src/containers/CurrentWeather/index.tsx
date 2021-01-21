@@ -8,8 +8,10 @@ import "./style.scss";
 
 const CurrentWeather: React.FC = () => {
   const weatherInfo = useSelector(
-    (state: weatherInfoType) => state.selectedLocation,
+    (state: weatherInfoType) => state.selectedLocation.currentWeather,
   );
+  console.log("this is the weather info", weatherInfo);
+
   const { city, country } = weatherInfo.locationName;
   const { current, min, max, feels } = weatherInfo.temperature;
   const modifiedDate = modifyDate();
