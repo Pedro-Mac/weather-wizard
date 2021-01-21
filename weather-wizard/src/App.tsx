@@ -18,24 +18,23 @@ const App: React.FC = () => {
       const lon = location.coords.longitude;
 
       const weather = await getWeatherInfo(lat, lon);
+
       dispatch({ type: SET_LOCATION, payload: weather });
     },
     [dispatch],
   );
 
-  // const handleUnsuccessfulUserLocation = useCallback(() => {
-  //   getCurrentWeatherInfo(39.74362, -8.80705).then((info) => {
-  //     const weatherInfoToState = filterWeatherInfo(info.data);
-  //     dispatch({ type: SET_LOCATION, payload: weatherInfoToState });
-  //   });
-  // }, [dispatch]);
+  const handleUnsuccessfulUserLocation = useCallback(async () => {
+    const weather = await getWeatherInfo(39.74362, -8.80705);
+    dispatch({ type: SET_LOCATION, payload: weather });
+  }, [dispatch]);
 
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
       handleSuccessfulUserLocation,
-      // handleUnsuccessfulUserLocation,
+      handleUnsuccessfulUserLocation,
     );
-  }, [handleSuccessfulUserLocation]);
+  }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation]);
   return (
     <div className="App">
       <CurrentWeather />

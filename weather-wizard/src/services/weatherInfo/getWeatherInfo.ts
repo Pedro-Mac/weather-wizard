@@ -26,7 +26,6 @@ export const getWeatherInfo = async (lat: number, lon: number) => {
   const filteredCurrentWeather = filterCurrentWeatherInfo(currentWeather.data);
 
   const forecastInfo = await getForecastWeatherInfo(lat, lon);
-  // console.log(forecastInfo.data);
   const filteredForecastWeather = filterForecastWeatherInfo(forecastInfo.data);
 
   return { current: filteredCurrentWeather, forecast: filteredForecastWeather };

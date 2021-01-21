@@ -17,7 +17,6 @@ export const locationReducer = (
 ) => {
   switch (action.type) {
     case SET_LOCATION:
-      console.log(action.payload);
       return {
         ...state,
         currentWeather: {
@@ -26,6 +25,7 @@ export const locationReducer = (
           temperature: action.payload.current.temperature,
           locationName: action.payload.current.locationName,
         },
+        forecast: action.payload.forecast,
       };
     default:
       return state;
