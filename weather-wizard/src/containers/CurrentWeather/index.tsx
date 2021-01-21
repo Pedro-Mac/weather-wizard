@@ -11,6 +11,7 @@ const CurrentWeather: React.FC = () => {
     (state: weatherInfoType) => state.selectedLocation,
   );
   const { city, country } = weatherInfo.locationName;
+  const { current, min, max, feels } = weatherInfo.temperature;
   const modifiedDate = modifyDate();
   return (
     <>
@@ -28,18 +29,15 @@ const CurrentWeather: React.FC = () => {
           <section className="containter-weather-info">
             <div className="weather-current">
               <img src="https://picsum.photos/30/30" alt="weather" />
-              <h1 className="degrees-highlight">
-                {Math.round(weatherInfo.temperature.current)}°
-              </h1>
+              <h1 className="degrees-highlight">{Math.round(current)}°</h1>
             </div>
             <ul className="weather-specs-list">
               <li className="weather-specs-item">{weatherInfo.weather}</li>
               <li className="weather-specs-item">
-                {Math.round(weatherInfo.temperature.min)}° /{" "}
-                {Math.round(weatherInfo.temperature.max)}°
+                {Math.round(min)}° / {Math.round(max)}°
               </li>
               <li className="weather-specs-item">
-                Feeling {Math.round(weatherInfo.temperature.feels)}°
+                Feeling {Math.round(feels)}°
               </li>
             </ul>
           </section>
