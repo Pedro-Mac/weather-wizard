@@ -11,19 +11,21 @@ const ForecastWeather = () => {
   const weatherList = useSelector(
     (state: weatherInfoType) => state.selectedLocation.forecastWeather,
   );
-
   return (
-    <article className="forecast-weather-container">
-      {weatherList &&
-        weatherList.map((item, index) => (
-          <WeatherForecastRow
-            humidity={item.humidity}
-            temperature={item.temperature}
-            weatherStatus={item.weatherStatus}
-            key={index}
-          />
-        ))}
-    </article>
+    <>
+      {weatherList && (
+        <article className="forecast-weather-container">
+          {weatherList.map((item, index) => (
+            <WeatherForecastRow
+              humidity={item.humidity}
+              temperature={item.temperature}
+              weatherStatus={item.weatherStatus}
+              key={index}
+            />
+          ))}
+        </article>
+      )}
+    </>
   );
 };
 
