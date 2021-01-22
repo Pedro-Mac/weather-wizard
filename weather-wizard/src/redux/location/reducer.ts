@@ -4,7 +4,7 @@ import { actionType, stateType } from "./types";
 
 const initialState = {
   currentWeather: {
-    date: "",
+    date: NaN,
     weather: "",
     temperature: { current: 0, min: 0, max: 0, feels: 0 },
     locationName: { city: "", country: "" },

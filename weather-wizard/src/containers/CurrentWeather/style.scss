@@ -13,11 +13,15 @@
     .weather-location {
       display: flex;
       align-items: center;
+      margin-bottom: 0.25rem;
+      img {
+        width: 1rem;
+      }
 
       .location-subtle {
         font-size: 1rem;
         font-weight: 400;
-        margin-left: 1rem;
+        margin-left: 0.25rem;
       }
     }
 
@@ -40,6 +44,10 @@
         font-size: 3.5rem;
         margin-left: 0.5rem;
         font-weight: 400;
+      }
+
+      .weather-icon {
+        max-width: 4rem;
       }
     }
 

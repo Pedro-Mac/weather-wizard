@@ -11,7 +11,6 @@ const ForecastWeather = () => {
   const weatherList = useSelector(
     (state: weatherInfoType) => state.selectedLocation.forecastWeather,
   );
-  console.log(weatherList);
 
   return (
     <article className="forecast-weather-container">

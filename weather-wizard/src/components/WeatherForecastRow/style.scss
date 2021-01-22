@@ -3,15 +3,33 @@
   justify-content: space-between;
   align-items: center;
   margin: 1rem 0;
+
+  > div {
+    width: 25%;
+  }
   .forecast-weekday-highlight {
-    font-weight: 500;
+    h4 {
+      font-weight: 500;
+    }
   }
 
   .forecast-humidity-container {
     display: flex;
+    justify-content: center;
 
     .humidity-img {
-      width: 0.5rem;
+      width: 0.75rem;
+      margin-right: 0.25rem;
     }
+  }
+
+  .forecast-weather {
+    display: flex;
+    padding-left: 0.75rem;
+  }
+
+  .forecast-temperature {
+    display: flex;
+    justify-content: flex-end;
   }
 }

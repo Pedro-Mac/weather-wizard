@@ -1,7 +1,7 @@
 export interface weatherInfoType {
   selectedLocation: {
     currentWeather: {
-      date: string;
+      date: number;
       weather: string;
       temperature: { current: number; min: number; max: number; feels: number };
       locationName: { city: string; country: string };

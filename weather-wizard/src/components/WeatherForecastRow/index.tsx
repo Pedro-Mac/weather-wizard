@@ -27,7 +27,9 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
   };
   return (
     <section className="forecast-row-container">
-      <h4 className="forecast-weekday-highlight">weekday</h4>
+      <div className="forecast-weekday-highlight">
+        <h4>weekday</h4>
+      </div>
       <div className="forecast-humidity-container">
         <img
           src={humidityIcon(humidity)}
@@ -36,10 +38,14 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
         />
         <p>{humidity}%</p>
       </div>
-      <p className="forecast-weather">{main}</p>
-      <p className="forecast-temperature">
-        {Math.round(min)}° / {Math.round(max)}°
-      </p>
+      <div className="forecast-weather">
+        <p>{main}</p>
+      </div>
+      <div className="forecast-temperature">
+        <p>
+          {Math.round(min)}° / {Math.round(max)}°
+        </p>
+      </div>
     </section>
   );
 };
