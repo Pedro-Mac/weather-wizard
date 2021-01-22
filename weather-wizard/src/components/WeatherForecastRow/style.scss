@@ -1,0 +1,17 @@
+.forecast-row-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  .forecast-weekday-highlight {
+    font-weight: 500;
+  }
+
+  .forecast-humidity-container {
+    display: flex;
+
+    .humidity-img {
+      width: 0.5rem;
+    }
+  }
+}
