@@ -17,7 +17,7 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
   const { main } = weatherStatus;
 
   const humidityIcon = (percentage: number) => {
-    if (percentage > 90) {
+    if (percentage > 66) {
       return highHumidityImg;
     } else if (percentage > 33) {
       return midHumidityImg;

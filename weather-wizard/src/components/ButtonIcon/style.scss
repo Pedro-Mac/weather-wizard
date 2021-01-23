@@ -1,0 +1,10 @@
+@import "../../styles/master";
+button {
+  background-color: $secondary-color;
+  border: none;
+
+  img {
+    width: 1.25rem;
+    transform: rotate(180deg);
+  }
+}
