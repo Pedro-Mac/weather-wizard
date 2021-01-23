@@ -10,14 +10,9 @@ import cloudsImg from "../../../images/svg/clouds.svg";
 import "./style.scss";
 
 const CurrentWeather: React.FC = () => {
-  const { name, sys, weather, main } = useSelector(
+  const weatherStateInfo = useSelector(
     (state: weatherInfoType) => state.selectedLocation.currentWeather,
   );
-  console.log(weather);
-
-  useEffect(() => {
-    console.log("redux state", weather);
-  });
 
   const getWeatherIcon = (weather: string) => {
     switch (weather) {
@@ -30,33 +25,38 @@ const CurrentWeather: React.FC = () => {
 
   return (
     <>
-      {weather && (
+      {weatherStateInfo && (
         <article className="container-weather-main">
           <section className="containter-weather-date">
             <div className="weather-location">
               <img src={pinLocation} alt="pin" />
               <h2 className="location-subtle">
-                {name}, {sys.country}
+                {weatherStateInfo.name}, {weatherStateInfo.sys.country}
               </h2>
             </div>
-            <p className="date">{"date"}</p>
+            <p className="date">{modifyDate(weatherStateInfo.dt * 1000)}</p>
           </section>
           <section className="containter-weather-info">
             <div className="weather-current">
               <img
                 className="weather-icon"
-                src={getWeatherIcon(weather[0].main)}
+                src={getWeatherIcon(weatherStateInfo.weather[0].main)}
                 alt="weather"
               />
-              <h1 className="degrees-highlight">{Math.round(main.temp)}°</h1>
+              <h1 className="degrees-highlight">
+                {Math.round(weatherStateInfo.main.temp)}°
+              </h1>
             </div>
             <ul className="weather-specs-list">
-              <li className="weather-specs-item">{weather[0].main}</li>
               <li className="weather-specs-item">
-                {Math.round(main.temp_min)}° / {Math.round(main.temp_max)}°
+                {weatherStateInfo.weather[0].main}
               </li>
               <li className="weather-specs-item">
-                Feeling {Math.round(main.feels_like)}°
+                {Math.round(weatherStateInfo.main.temp_min)}° /{" "}
+                {Math.round(weatherStateInfo.main.temp_max)}°
+              </li>
+              <li className="weather-specs-item">
+                Feeling {Math.round(weatherStateInfo.main.feels_like)}°
               </li>
             </ul>
           </section>

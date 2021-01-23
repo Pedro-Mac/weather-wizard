@@ -1,5 +1,9 @@
-export const modifyDate = () => {
-  let [weekDay, month, day, year, time] = new Date().toString().split(" ");
+export const modifyDate = (timeElapsed: number) => {
+  let [weekDay, month, day, year, time] = new Date(timeElapsed)
+    .toString()
+    .split(" ");
+
+  console.log(new Date(timeElapsed));
   //Get hour and minutes
   time = time.slice(0, 5);
   //change x1, x2 and x3 to x1st, x2nd and x3rd from twenties on
