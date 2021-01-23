@@ -8,12 +8,12 @@ import WeatherForecastRow from "../../../components/WeatherForecastRow";
 import "./style.scss";
 
 const ForecastWeather = () => {
-  const weatherList = useSelector(
-    (state: weatherInfoType) => state.selectedLocation.forecastWeather,
-  );
+  // const weatherList = useSelector(
+  //   (state: weatherInfoType) => state.selectedLocation.forecastWeather,
+  // );
   return (
     <>
-      {weatherList && (
+      {/* {weatherList && (
         <article className="forecast-weather-container">
           {weatherList.map((item, index) => (
             <WeatherForecastRow
@@ -24,7 +24,7 @@ const ForecastWeather = () => {
             />
           ))}
         </article>
-      )}
+      )} */}
     </>
   );
 };

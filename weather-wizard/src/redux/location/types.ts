@@ -2,10 +2,37 @@ export interface actionType {
   type: string;
   payload: {
     current: {
-      date: string;
-      weather: string;
-      temperature: { current: number; min: number; max: number; feels: number };
-      locationName: { city: string; country: string };
+      base: string;
+      clouds: { all: number };
+      cod: number;
+      coord: { lon: number; lat: number };
+      dt: number;
+      id: number;
+      main: {
+        temp: number;
+        feels_like: number;
+        temp_min: number;
+        temp_max: number;
+        humidity: number;
+        pressure: number;
+      };
+      name: string;
+      sys: {
+        country: string;
+        id: number;
+        sunrise: number;
+        sunset: number;
+        type: number;
+      };
+      timezone: number;
+      visibility: number;
+      weather: {
+        id: number;
+        main: string;
+        description: string;
+        icon: string;
+      }[];
+      wind: { deg: number; speed: number };
     };
     forecast: {
       humidity: number;
@@ -21,10 +48,46 @@ export interface actionType {
 }
 
 export interface stateType {
-  currentWeather: {
-    date: number;
-    weather: string;
-    temperature: { current: number; min: number; max: number; feels: number };
-    locationName: { city: string; country: string };
+  current: {
+    clouds: { all: number };
+    cod: number;
+    coord: { lon: number; lat: number };
+    dt: number;
+    id: number;
+    main: {
+      temp: number;
+      feels_like: number;
+      temp_min: number;
+      temp_max: number;
+      humidity: number;
+      pressure: number;
+    };
+    name: string;
+    sys: {
+      country: string;
+      id: number;
+      sunrise: number;
+      sunset: number;
+      type: number;
+    };
+    timezone: number;
+    visibility: number;
+    weather: {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    }[];
+    wind: { deg: number; speed: number };
   };
+  forecast: {
+    humidity: number;
+    temperature: { min: number; max: number };
+    weatherStatus: {
+      id: number;
+      main: string;
+      description: string;
+      icon: string;
+    };
+  }[];
 }

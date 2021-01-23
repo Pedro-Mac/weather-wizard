@@ -20,7 +20,6 @@ const SearchBar = () => {
   const handleFormSubmission = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const weather = await getCurrentWeatherByCity(userInput);
-    console.log(weather.data);
   };
 
   return (

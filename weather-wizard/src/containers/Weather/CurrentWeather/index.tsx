@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { weatherInfoType } from "../types";
@@ -10,13 +10,14 @@ import cloudsImg from "../../../images/svg/clouds.svg";
 import "./style.scss";
 
 const CurrentWeather: React.FC = () => {
-  const weatherInfo = useSelector(
+  const { name, sys, weather, main } = useSelector(
     (state: weatherInfoType) => state.selectedLocation.currentWeather,
   );
+  console.log(weather);
 
-  const { city, country } = weatherInfo.locationName;
-  const { current, min, max, feels } = weatherInfo.temperature;
-  const readableDate = modifyDate();
+  useEffect(() => {
+    console.log("redux state", weather);
+  });
 
   const getWeatherIcon = (weather: string) => {
     switch (weather) {
@@ -26,33 +27,36 @@ const CurrentWeather: React.FC = () => {
         return;
     }
   };
-  const weatherIcon = getWeatherIcon(weatherInfo.weather);
 
   return (
     <>
-      {weatherInfo.locationName.city && (
+      {weather && (
         <article className="container-weather-main">
           <section className="containter-weather-date">
             <div className="weather-location">
               <img src={pinLocation} alt="pin" />
               <h2 className="location-subtle">
-                {city}, {country}
+                {name}, {sys.country}
               </h2>
             </div>
-            <p className="date">{readableDate}</p>
+            <p className="date">{"date"}</p>
           </section>
           <section className="containter-weather-info">
             <div className="weather-current">
-              <img className="weather-icon" src={weatherIcon} alt="weather" />
-              <h1 className="degrees-highlight">{Math.round(current)}°</h1>
+              <img
+                className="weather-icon"
+                src={getWeatherIcon(weather[0].main)}
+                alt="weather"
+              />
+              <h1 className="degrees-highlight">{Math.round(main.temp)}°</h1>
             </div>
             <ul className="weather-specs-list">
-              <li className="weather-specs-item">{weatherInfo.weather}</li>
+              <li className="weather-specs-item">{weather[0].main}</li>
               <li className="weather-specs-item">
-                {Math.round(min)}° / {Math.round(max)}°
+                {Math.round(main.temp_min)}° / {Math.round(main.temp_max)}°
               </li>
               <li className="weather-specs-item">
-                Feeling {Math.round(feels)}°
+                Feeling {Math.round(main.feels_like)}°
               </li>
             </ul>
           </section>

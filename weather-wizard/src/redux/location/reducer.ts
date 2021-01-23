@@ -12,20 +12,30 @@ const initialState = {
 };
 
 export const locationReducer = (
-  state: stateType = initialState,
+  state: stateType | {} = {},
   action: actionType,
 ) => {
   switch (action.type) {
     case SET_WEATHER_INFO:
+      const { current, forecast } = action.payload;
       return {
         ...state,
         currentWeather: {
-          date: action.payload.current.date,
-          weather: action.payload.current.weather,
-          temperature: action.payload.current.temperature,
-          locationName: action.payload.current.locationName,
+          base: current.base,
+          clouds: current.clouds,
+          cod: current.cod,
+          coord: current.coord,
+          dt: current.dt,
+          id: current.id,
+          main: current.main,
+          name: current.name,
+          sys: current.sys,
+          timezone: current.timezone,
+          visibility: current.visibility,
+          weather: current.weather,
+          wind: current.wind,
         },
-        forecastWeather: action.payload.forecast,
+        forecastWeather: forecast,
       };
     default:
       return state;
