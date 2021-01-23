@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
+import { getCurrentWeatherByCity } from "../../services/weather-by-city/getWeatherInfo";
+
 import ButtonIcon from "../../components/ButtonIcon";
 
 import searchIcon from "../../images/svg/search.svg";
@@ -15,8 +17,10 @@ const SearchBar = () => {
     setUserInput(value);
   };
 
-  const handleFormSubmission = (event: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmission = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const weather = await getCurrentWeatherByCity(userInput);
+    console.log(weather.data);
   };
 
   return (

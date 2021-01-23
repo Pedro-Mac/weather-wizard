@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-import { getWeatherInfo } from "./services/weatherInfo/getWeatherInfo";
+import { getWeatherInfoByCoordinates } from "./services/weather-by-coordinates/getWeatherInfo";
 
 import { SET_WEATHER_INFO } from "./redux/location/actions";
 
@@ -19,7 +19,7 @@ const App: React.FC = () => {
       const lat = location.coords.latitude;
       const lon = location.coords.longitude;
 
-      const weather = await getWeatherInfo(lat, lon);
+      const weather = await getWeatherInfoByCoordinates(lat, lon);
 
       dispatch({ type: SET_WEATHER_INFO, payload: weather });
     },
@@ -27,7 +27,7 @@ const App: React.FC = () => {
   );
 
   const handleUnsuccessfulUserLocation = useCallback(async () => {
-    const weather = await getWeatherInfo(39.74362, -8.80705);
+    const weather = await getWeatherInfoByCoordinates(39.74362, -8.80705);
     dispatch({ type: SET_WEATHER_INFO, payload: weather });
   }, [dispatch]);
 
