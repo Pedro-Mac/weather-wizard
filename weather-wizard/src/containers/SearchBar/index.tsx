@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 
 import ButtonIcon from "../../components/ButtonIcon";
 
@@ -15,8 +15,12 @@ const SearchBar = () => {
     setUserInput(value);
   };
 
+  const handleFormSubmission = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
-    <form className="searchbar-form">
+    <form className="searchbar-form" onSubmit={handleFormSubmission}>
       <img className="search-icon" src={searchIcon} alt="lupe" />
       <input
         className="searchbar-input"
