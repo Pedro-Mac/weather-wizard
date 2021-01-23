@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { weatherInfoType } from "../types";
 import { modifyDate } from "./helpers";
 
-import pinLocation from "../../images/svg/pin.svg";
-import cloudsImg from "../../images/svg/clouds.svg";
+import pinLocation from "../../../images/svg/pin.svg";
+import cloudsImg from "../../../images/svg/clouds.svg";
 
 import "./style.scss";
 

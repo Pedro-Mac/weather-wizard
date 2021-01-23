@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { weatherInfoType } from "../types";
 
-import WeatherForecastRow from "../../components/WeatherForecastRow";
+import WeatherForecastRow from "../../../components/WeatherForecastRow";
 
 import "./style.scss";
 

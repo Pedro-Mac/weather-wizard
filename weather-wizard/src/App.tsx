@@ -5,8 +5,9 @@ import { getWeatherInfo } from "./services/weatherInfo/getWeatherInfo";
 
 import { SET_WEATHER_INFO } from "./redux/location/actions";
 
-import CurrentWeather from "./containers/CurrentWeather";
-import ForecastWeather from "./containers/ForecastWeather";
+import CurrentWeather from "./containers/Weather/CurrentWeather";
+import ForecastWeather from "./containers/Weather/ForecastWeather";
+import SearchBar from "./containers/SearchBar";
 
 import "./App.scss";
 
@@ -38,6 +39,7 @@ const App: React.FC = () => {
   }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation]);
   return (
     <div className="App">
+      <SearchBar />
       <CurrentWeather />
       <ForecastWeather />
     </div>
