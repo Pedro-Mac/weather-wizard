@@ -61,7 +61,7 @@ export interface weatherInfoType {
         icon: string;
         id: number;
         main: string;
-      };
+      }[];
       wind_deg: number;
       wind_speed: number;
     }[];

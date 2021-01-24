@@ -18,15 +18,18 @@ const ForecastWeather = () => {
         <article className="forecast-weather-container">
           {weatherList
             .filter((item, index) => index !== 0)
-            .map((item, index) => (
-              <WeatherForecastRow
-                humidity={item.humidity}
-                temperature={item.temp}
-                weatherStatus={item.weather}
-                date={item.dt}
-                key={index}
-              />
-            ))}
+            .map((item, index) => {
+              console.log(item);
+              return (
+                <WeatherForecastRow
+                  humidity={item.humidity}
+                  temperature={item.temp}
+                  weatherStatus={item.weather}
+                  date={item.dt}
+                  key={index}
+                />
+              );
+            })}
         </article>
       )}
     </>

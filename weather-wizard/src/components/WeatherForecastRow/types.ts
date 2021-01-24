@@ -6,6 +6,6 @@ export interface WeatherForecastRowProps {
     main: string;
     description: string;
     icon: string;
-  };
+  }[];
   date: number;
 }
