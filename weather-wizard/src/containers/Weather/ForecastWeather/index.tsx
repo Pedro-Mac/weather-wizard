@@ -12,19 +12,21 @@ const ForecastWeather = () => {
     (state: weatherInfoType) => state.selectedLocation.forecastWeather,
   );
 
-  console.log("this is the weather list", weatherList);
   return (
     <>
       {weatherList && (
         <article className="forecast-weather-container">
-          {weatherList.map((item, index) => (
-            <WeatherForecastRow
-              humidity={item.humidity}
-              temperature={item.temp}
-              weatherStatus={item.weather}
-              key={index}
-            />
-          ))}
+          {weatherList
+            .filter((item, index) => index !== 0)
+            .map((item, index) => (
+              <WeatherForecastRow
+                humidity={item.humidity}
+                temperature={item.temp}
+                weatherStatus={item.weather}
+                date={item.dt}
+                key={index}
+              />
+            ))}
         </article>
       )}
     </>

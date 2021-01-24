@@ -7,4 +7,5 @@ export interface WeatherForecastRowProps {
     description: string;
     icon: string;
   };
+  date: number;
 }

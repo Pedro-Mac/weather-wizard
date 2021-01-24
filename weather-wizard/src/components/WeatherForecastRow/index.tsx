@@ -12,6 +12,7 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
   humidity,
   temperature,
   weatherStatus,
+  date,
 }) => {
   const humidityIcon = (percentage: number) => {
     if (percentage > 66) {
@@ -22,12 +23,22 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
       return lowHumidityImg;
     }
   };
+  const weekDaysList = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const dateString = new Date(date * 1000);
+  const weekDay = weekDaysList[dateString.getDay()];
 
-  console.log("weather status", weatherStatus);
   return (
     <section className="forecast-row-container">
       <div className="forecast-weekday-highlight">
-        <h4>weekday</h4>
+        <h4>{weekDay}</h4>
       </div>
       <div className="forecast-humidity-container">
         <img

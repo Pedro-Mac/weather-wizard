@@ -1,7 +1,5 @@
 import axios from "axios";
 
-import { filterForecastWeatherInfo } from "./filterWeatherInfo";
-
 const getCurrentWeatherByCoordinates = (lat: number, lon: number) => {
   return axios
     .get(

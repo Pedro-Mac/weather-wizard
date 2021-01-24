@@ -10,12 +10,13 @@
   .forecast-weekday-highlight {
     h4 {
       font-weight: 500;
+      text-align: start;
     }
   }
 
   .forecast-humidity-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 
     .humidity-img {
       width: 0.75rem;
