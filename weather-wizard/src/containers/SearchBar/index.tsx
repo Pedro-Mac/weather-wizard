@@ -1,6 +1,12 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { useDispatch } from "react-redux";
 
-import { getCurrentWeatherByCity } from "../../services/weather-by-city/getWeatherInfo";
+import { SET_WEATHER_INFO } from "../../redux/location/actions";
+
+import {
+  getCurrentWeatherByCity,
+  getForecastWeatherByCity,
+} from "../../services/weather-by-city/getWeatherInfo";
 
 import ButtonIcon from "../../components/ButtonIcon";
 
@@ -10,6 +16,7 @@ import arrowIcon from "../../images/svg/arrow.svg";
 import "./style.scss";
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
   const [userInput, setUserInput] = useState<string>("");
 
   const handleUserInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +26,20 @@ const SearchBar = () => {
 
   const handleFormSubmission = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const weather = await getCurrentWeatherByCity(userInput);
+    const currentWeather = await (await getCurrentWeatherByCity(userInput))
+      .data;
+    const { coord } = currentWeather;
+    const forecastWeather = await getForecastWeatherByCity(
+      coord.lat,
+      coord.lon,
+    );
+    dispatch({
+      type: SET_WEATHER_INFO,
+      payload: {
+        current: currentWeather,
+        forecast: forecastWeather.data.daily,
+      },
+    });
   };
 
   return (

@@ -2,15 +2,6 @@ import { SET_WEATHER_INFO } from "./actions";
 
 import { actionType, stateType } from "./types";
 
-const initialState = {
-  currentWeather: {
-    date: NaN,
-    weather: "",
-    temperature: { current: 0, min: 0, max: 0, feels: 0 },
-    locationName: { city: "", country: "" },
-  },
-};
-
 export const locationReducer = (
   state: stateType | {} = {},
   action: actionType,
@@ -19,7 +10,6 @@ export const locationReducer = (
     case SET_WEATHER_INFO:
       const { current, forecast } = action.payload;
       return {
-        ...state,
         currentWeather: {
           base: current.base,
           clouds: current.clouds,

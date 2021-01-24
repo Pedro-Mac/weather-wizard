@@ -1,4 +1,5 @@
 export const modifyDate = (timeElapsed: number) => {
+  // eslint-disable-next-line
   let [weekDay, month, day, year, time] = new Date(timeElapsed)
     .toString()
     .split(" ");
