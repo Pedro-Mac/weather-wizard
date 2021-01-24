@@ -41,7 +41,7 @@ const App: React.FC = () => {
     <div className="App">
       <SearchBar />
       <CurrentWeather />
-      {/* <ForecastWeather /> */}
+      <ForecastWeather />
     </div>
   );
 };

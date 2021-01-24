@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { filterForecastWeatherInfo } from "./filterWeatherInfo";
+
 const getCurrentWeatherByCoordinates = (lat: number, lon: number) => {
   return axios
     .get(
@@ -18,10 +20,8 @@ const getForecastWeatherByCoordinates = (lat: number, lon: number) => {
 
 export const getWeatherInfoByCoordinates = async (lat: number, lon: number) => {
   const currentWeather = await getCurrentWeatherByCoordinates(lat, lon);
-  // const filteredCurrentWeather = filterCurrentWeatherInfo(currentWeather.data);
 
   const forecastInfo = await getForecastWeatherByCoordinates(lat, lon);
-  // const filteredForecastWeather = filterForecastWeatherInfo(forecastInfo.data);
 
-  return { current: currentWeather.data, forecast: forecastInfo.data };
+  return { current: currentWeather.data, forecast: forecastInfo.data.daily };
 };

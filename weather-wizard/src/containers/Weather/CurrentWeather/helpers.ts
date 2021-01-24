@@ -3,7 +3,6 @@ export const modifyDate = (timeElapsed: number) => {
     .toString()
     .split(" ");
 
-  console.log(new Date(timeElapsed));
   //Get hour and minutes
   time = time.slice(0, 5);
   //change x1, x2 and x3 to x1st, x2nd and x3rd from twenties on

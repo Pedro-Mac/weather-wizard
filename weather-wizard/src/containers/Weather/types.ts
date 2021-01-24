@@ -35,14 +35,35 @@ export interface weatherInfoType {
     };
 
     forecastWeather: {
+      clouds: number;
+      dew_point: number;
+      dt: number;
+      feels_like: { day: number; night: number; eve: number; morn: number };
       humidity: number;
-      temperature: { min: number; max: number };
-      weatherStatus: {
-        id: number;
-        main: string;
+      pop: number;
+      pressure: number;
+      rain: number;
+      snow: number;
+      sunrise: number;
+      sunset: number;
+
+      temp: {
+        min: number;
+        max: number;
+        day: number;
+        eve: number;
+        morn: number;
+        night: number;
+      };
+      uvi: number;
+      weather: {
         description: string;
         icon: string;
+        id: number;
+        main: string;
       };
+      wind_deg: number;
+      wind_speed: number;
     }[];
   };
 }

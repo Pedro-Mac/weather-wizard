@@ -13,9 +13,6 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
   temperature,
   weatherStatus,
 }) => {
-  const { min, max } = temperature;
-  const { main } = weatherStatus;
-
   const humidityIcon = (percentage: number) => {
     if (percentage > 66) {
       return highHumidityImg;
@@ -25,6 +22,8 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
       return lowHumidityImg;
     }
   };
+
+  console.log("weather status", weatherStatus);
   return (
     <section className="forecast-row-container">
       <div className="forecast-weekday-highlight">
@@ -39,11 +38,11 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
         <p>{humidity}%</p>
       </div>
       <div className="forecast-weather">
-        <p>{main}</p>
+        <p>{weatherStatus.main}</p>
       </div>
       <div className="forecast-temperature">
         <p>
-          {Math.round(min)}° / {Math.round(max)}°
+          {Math.round(temperature.min)}° / {Math.round(temperature.max)}°
         </p>
       </div>
     </section>
