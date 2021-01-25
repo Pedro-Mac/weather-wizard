@@ -6,7 +6,6 @@ import { modifyDate } from "./helpers/getDate";
 import { getWeatherIcon } from "./helpers/getWeatherIcon";
 
 import pinLocation from "../../../images/svg/pin.svg";
-import cloudsImg from "../../../images/svg/weather/clouds.svg";
 
 import "./style.scss";
 
@@ -14,15 +13,6 @@ const CurrentWeather: React.FC = () => {
   const weatherStateInfo = useSelector(
     (state: weatherInfoType) => state.selectedLocation.currentWeather,
   );
-
-  // const getWeatherIcon = (weather: string) => {
-  //   switch (weather) {
-  //     case "Clouds":
-  //       return cloudsImg;
-  //     default:
-  //       return;
-  //   }
-  // };
 
   return (
     <>
