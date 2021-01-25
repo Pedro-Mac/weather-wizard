@@ -1,27 +1,24 @@
 import React, { useState } from "react";
 
+import Hamburger from "./Hamburger";
+
 import "./styles/style.scss";
 
-const Nav = () => {
+const Nav: React.FC = () => {
   const [hambIsActive, setHambIsActive] = useState<boolean>(false);
 
   const toggleHamburgerMenu = () => {
     setHambIsActive((prevState: boolean) => !prevState);
   };
   return (
-    <nav>
-      <button
-        className={`hamburger hamburger--slider ${
-          hambIsActive && "is-active"
-        } `}
-        type="button"
-        onClick={toggleHamburgerMenu}
-      >
-        <span className="hamburger-box">
-          <span className="hamburger-inner"></span>
-        </span>
-      </button>
-    </nav>
+    <div className="navbar-container">
+      <nav>
+        <ul>
+          <li>item</li>
+        </ul>
+      </nav>
+      <Hamburger isActive={hambIsActive} handleToggle={toggleHamburgerMenu} />
+    </div>
   );
 };
 
