@@ -14,11 +14,10 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
   weatherStatus,
   date,
 }) => {
-  const weekday = getWeekDay(date);
-  const humidityIcon = getHumidityIcon(humidity);
-
   const { main } = weatherStatus[0];
 
+  const weekday = getWeekDay(date);
+  const humidityIcon = getHumidityIcon(humidity);
   const weatherIcon = getWeatherIcon(main);
 
   return (
@@ -32,7 +31,6 @@ const WeatherForecastRow: React.FC<WeatherForecastRowProps> = ({
       </div>
       <div className="forecast-weather">
         <img src={weatherIcon} alt={main} className="forecast-weather-icon" />
-        {/* <p>{weatherStatus[0].main}</p> */}
       </div>
       <div className="forecast-temperature">
         <p>{Math.round(temperature.min)}°</p>
