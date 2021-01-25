@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, batch } from "react-redux";
 
 import { SET_WEATHER_INFO } from "../../redux/location/actions";
 import { ADD_LOCATION } from "../../redux/locationsList/actions";
@@ -28,28 +28,29 @@ const SearchBar = () => {
   const handleFormSubmission = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const currentWeather = (await getCurrentWeatherByCity(userInput)).data;
-    console.log(currentWeather);
+
     const { coord, name, sys } = currentWeather;
     const forecastWeather = await getForecastWeatherByCity(
       coord.lat,
       coord.lon,
     );
-    dispatch({
-      type: SET_WEATHER_INFO,
-      payload: {
-        current: currentWeather,
-        forecast: forecastWeather.data.daily,
-      },
+
+    batch(() => {
+      dispatch({
+        type: SET_WEATHER_INFO,
+        payload: {
+          current: currentWeather,
+          forecast: forecastWeather.data.daily,
+        },
+      });
+
+      dispatch({
+        type: ADD_LOCATION,
+        payload: { coord, city: name, country: sys.country },
+      });
     });
 
-    // currentWeather.sys.country
-    // currentWeather.coord.lon
-    // currentWeather.coord.lat
-    // currentWeather.name
-    dispatch({
-      type: ADD_LOCATION,
-      payload: { coord, city: name, country: sys.country },
-    });
+    // I am not sure if dispatching twice is not an anti pattern
   };
 
   return (
