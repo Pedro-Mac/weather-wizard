@@ -3,8 +3,12 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { locationReducer } from "./location/reducer";
+import { locationsListReducer } from "./locationsList/reducer";
 
-const reducer = combineReducers({ selectedLocation: locationReducer });
+const reducer = combineReducers({
+  selectedLocation: locationReducer,
+  locationsList: locationsListReducer,
+});
 
 const middleware = [thunk];
 

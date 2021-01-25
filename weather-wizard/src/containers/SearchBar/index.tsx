@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useDispatch } from "react-redux";
 
 import { SET_WEATHER_INFO } from "../../redux/location/actions";
+import { ADD_LOCATION } from "../../redux/locationsList/actions";
 
 import {
   getCurrentWeatherByCity,
@@ -26,9 +27,9 @@ const SearchBar = () => {
 
   const handleFormSubmission = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const currentWeather = await (await getCurrentWeatherByCity(userInput))
-      .data;
-    const { coord } = currentWeather;
+    const currentWeather = (await getCurrentWeatherByCity(userInput)).data;
+    console.log(currentWeather);
+    const { coord, name, sys } = currentWeather;
     const forecastWeather = await getForecastWeatherByCity(
       coord.lat,
       coord.lon,
@@ -39,6 +40,15 @@ const SearchBar = () => {
         current: currentWeather,
         forecast: forecastWeather.data.daily,
       },
+    });
+
+    // currentWeather.sys.country
+    // currentWeather.coord.lon
+    // currentWeather.coord.lat
+    // currentWeather.name
+    dispatch({
+      type: ADD_LOCATION,
+      payload: { coord, city: name, country: sys.country },
     });
   };
 

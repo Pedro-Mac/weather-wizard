@@ -19,7 +19,6 @@ const ForecastWeather = () => {
           {weatherList
             .filter((item, index) => index !== 0)
             .map((item, index) => {
-              console.log(item);
               return (
                 <WeatherForecastRow
                   humidity={item.humidity}
