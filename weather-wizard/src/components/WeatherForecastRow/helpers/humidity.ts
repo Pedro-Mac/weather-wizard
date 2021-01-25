@@ -1,6 +1,6 @@
-import highHumidityImg from "../../../images/svg/full-drop.svg";
-import midHumidityImg from "../../../images/svg/half-drop.svg";
-import lowHumidityImg from "../../../images/svg/empty-drop.svg";
+import highHumidityImg from "../../../images/svg/weather/humidity/full-drop.svg";
+import midHumidityImg from "../../../images/svg/weather/humidity/half-drop.svg";
+import lowHumidityImg from "../../../images/svg/weather/humidity/empty-drop.svg";
 
 export const getHumidityIcon = (percentage: number) => {
   if (percentage > 66) {

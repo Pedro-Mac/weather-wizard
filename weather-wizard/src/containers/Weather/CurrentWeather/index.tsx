@@ -2,10 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { weatherInfoType } from "../types";
-import { modifyDate } from "./helpers";
+import { modifyDate } from "./helpers/getDate";
+import { getWeatherIcon } from "./helpers/getWeatherIcon";
 
 import pinLocation from "../../../images/svg/pin.svg";
-import cloudsImg from "../../../images/svg/clouds.svg";
+import cloudsImg from "../../../images/svg/weather/clouds.svg";
 
 import "./style.scss";
 
@@ -14,14 +15,14 @@ const CurrentWeather: React.FC = () => {
     (state: weatherInfoType) => state.selectedLocation.currentWeather,
   );
 
-  const getWeatherIcon = (weather: string) => {
-    switch (weather) {
-      case "Clouds":
-        return cloudsImg;
-      default:
-        return;
-    }
-  };
+  // const getWeatherIcon = (weather: string) => {
+  //   switch (weather) {
+  //     case "Clouds":
+  //       return cloudsImg;
+  //     default:
+  //       return;
+  //   }
+  // };
 
   return (
     <>
@@ -41,7 +42,7 @@ const CurrentWeather: React.FC = () => {
               <img
                 className="weather-icon"
                 src={getWeatherIcon(weatherStateInfo.weather[0].main)}
-                alt="weather"
+                alt={weatherStateInfo.weather[0].main}
               />
               <h1 className="degrees-highlight">
                 {Math.round(weatherStateInfo.main.temp)}°
