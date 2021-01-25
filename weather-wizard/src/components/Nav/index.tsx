@@ -3,19 +3,17 @@ import React, { useState } from "react";
 import "./styles/style.scss";
 
 const Nav = () => {
-  const [hambIsActive, setHambIsActive] = useState<string>("");
+  const [hambIsActive, setHambIsActive] = useState<boolean>(false);
 
   const toggleHamburgerMenu = () => {
-    if (hambIsActive) {
-      setHambIsActive("");
-    } else {
-      setHambIsActive("is-active");
-    }
+    setHambIsActive((prevState: boolean) => !prevState);
   };
   return (
     <nav>
       <button
-        className={`hamburger hamburger--slider ${hambIsActive}`}
+        className={`hamburger hamburger--slider ${
+          hambIsActive && "is-active"
+        } `}
         type="button"
         onClick={toggleHamburgerMenu}
       >
