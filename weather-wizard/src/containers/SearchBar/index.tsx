@@ -49,8 +49,6 @@ const SearchBar = () => {
         payload: { coord, city: name, country: sys.country },
       });
     });
-
-    // I am not sure if dispatching twice is not an anti pattern
   };
 
   return (
