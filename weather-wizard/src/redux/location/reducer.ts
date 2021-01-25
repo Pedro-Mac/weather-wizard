@@ -10,10 +10,8 @@ export const locationReducer = (
     case SET_WEATHER_INFO:
       const { current, forecast } = action.payload;
 
-      console.log("this is the payload sent to the reducer", action.payload);
-
       return {
-        currentWeather: action.payload.current,
+        currentWeather: current,
         forecastWeather: forecast,
       };
     default:

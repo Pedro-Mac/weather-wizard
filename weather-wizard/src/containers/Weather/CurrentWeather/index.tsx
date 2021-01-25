@@ -14,8 +14,6 @@ const CurrentWeather: React.FC = () => {
     (state: weatherInfoType) => state.selectedLocation.currentWeather,
   );
 
-  console.log(weatherStateInfo);
-
   return (
     <>
       {weatherStateInfo && weatherStateInfo.name && (
