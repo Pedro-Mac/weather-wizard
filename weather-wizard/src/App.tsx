@@ -1,9 +1,10 @@
 import React, { useEffect, useCallback } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, batch } from "react-redux";
 
 import { getWeatherInfoByCoordinates } from "./services/weather-by-coordinates/getWeatherInfo";
 
 import { SET_WEATHER_INFO } from "./redux/location/actions";
+import { ADD_LOCATION } from "./redux/locationsList/actions";
 
 import CurrentWeather from "./containers/Weather/CurrentWeather";
 import ForecastWeather from "./containers/Weather/ForecastWeather";
@@ -21,8 +22,16 @@ const App: React.FC = () => {
       const lon = location.coords.longitude;
 
       const weather = await getWeatherInfoByCoordinates(lat, lon);
+      const { coord, name, sys } = weather.current;
 
-      dispatch({ type: SET_WEATHER_INFO, payload: weather });
+      batch(() => {
+        dispatch({ type: SET_WEATHER_INFO, payload: weather });
+
+        dispatch({
+          type: ADD_LOCATION,
+          payload: { coord, city: name, country: sys.country },
+        });
+      });
     },
     [dispatch],
   );

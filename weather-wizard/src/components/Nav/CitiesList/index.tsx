@@ -16,7 +16,13 @@ const CitiesList: React.FC<citiesListProps> = ({ isActive }) => {
   return (
     <section className={`nav-list-container ${isActive && "is-active"} `}>
       <ul className="nav-list">
-        <li className="nav-item">item</li>
+        {cities.map((item, index) => {
+          return (
+            <li key={index}>
+              {item.city}, {item.country}
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
