@@ -6,6 +6,7 @@
  * @link https://github.com/jonsuh/hamburgers
  */
 .hamburger {
+  z-index: 10000;
   display: inline-block;
   cursor: pointer;
   transition-property: opacity, filter;

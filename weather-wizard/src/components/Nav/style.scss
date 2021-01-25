@@ -1,0 +1,11 @@
+.navbar-container {
+  padding-top: 2rem;
+  position: relative;
+
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+    margin: 0 auto;
+  }
+}

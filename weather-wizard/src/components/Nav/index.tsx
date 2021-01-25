@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
 import Hamburger from "./Hamburger";
+import CitiesList from "./CitiesList";
 
-import "./styles/style.scss";
+import "./style.scss";
 
 const Nav: React.FC = () => {
   const [hambIsActive, setHambIsActive] = useState<boolean>(false);
@@ -11,14 +12,17 @@ const Nav: React.FC = () => {
     setHambIsActive((prevState: boolean) => !prevState);
   };
   return (
-    <div className="navbar-container">
-      <nav>
-        <ul>
-          <li>item</li>
-        </ul>
-      </nav>
-      <Hamburger isActive={hambIsActive} handleToggle={toggleHamburgerMenu} />
-    </div>
+    <>
+      <div className="navbar-container">
+        <nav className="navbar">
+          <Hamburger
+            isActive={hambIsActive}
+            handleToggle={toggleHamburgerMenu}
+          />
+        </nav>
+      </div>
+      <CitiesList isActive={hambIsActive} />
+    </>
   );
 };
 

@@ -1,0 +1,16 @@
+.nav-list-container {
+  position: absolute;
+  background-color: aliceblue;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transform: translateX(100vw);
+  .nav-list {
+    list-style: none;
+  }
+}
+
+.is-active {
+  transform: translateX(0);
+}
