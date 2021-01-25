@@ -14,9 +14,11 @@ const CurrentWeather: React.FC = () => {
     (state: weatherInfoType) => state.selectedLocation.currentWeather,
   );
 
+  console.log(weatherStateInfo);
+
   return (
     <>
-      {weatherStateInfo && (
+      {weatherStateInfo && weatherStateInfo.name && (
         <article className="container-weather-main">
           <section className="containter-weather-date">
             <div className="weather-location">

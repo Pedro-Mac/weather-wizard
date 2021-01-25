@@ -6,8 +6,18 @@
   top: 0;
   left: 0;
   transform: translateX(100vw);
-  .nav-list {
+  display: flex;
+  flex-direction: column;
+
+  .nav-list-group {
     list-style: none;
+    width: 90%;
+    margin: 8rem auto 0 auto;
+
+    .nav-list-item {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
   }
 }
 
