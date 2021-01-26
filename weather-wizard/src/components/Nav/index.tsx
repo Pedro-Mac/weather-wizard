@@ -11,6 +11,11 @@ const Nav: React.FC = () => {
   const toggleHamburgerMenu = () => {
     setHambIsActive((prevState: boolean) => !prevState);
   };
+
+  const closeMenu = () => {
+    setHambIsActive(false);
+  };
+
   return (
     <>
       <div className="navbar-container">
@@ -21,7 +26,7 @@ const Nav: React.FC = () => {
           />
         </nav>
       </div>
-      <CitiesList isActive={hambIsActive} />
+      <CitiesList isActive={hambIsActive} closeNav={closeMenu} />
     </>
   );
 };

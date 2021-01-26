@@ -49,6 +49,7 @@ const SearchBar = () => {
         payload: { coord, city: name, country: sys.country },
       });
     });
+    setUserInput("");
   };
 
   return (

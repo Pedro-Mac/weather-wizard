@@ -1,24 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { citiesListType } from "./types";
+import DeleteIcon from "./DeleteIcon";
 
 import { getWeatherInfoByCoordinates } from "../../../services/weather-by-coordinates/getWeatherInfo";
 
-import "./style.scss";
+import { citiesListType, citiesListProps } from "./types";
+
 import { SET_WEATHER_INFO } from "../../../redux/location/actions";
 
-interface citiesListProps {
-  isActive: boolean;
-}
+import "./style.scss";
 
-const CitiesList: React.FC<citiesListProps> = ({ isActive }) => {
+const CitiesList: React.FC<citiesListProps> = ({ isActive, closeNav }) => {
   const dispatch = useDispatch();
   const cities = useSelector((state: citiesListType) => state.locationsList);
 
   const setWeatherLocation = async (lat: number, lon: number) => {
     const weatherInfo = await getWeatherInfoByCoordinates(lat, lon);
-    console.log("this is the info", weatherInfo);
 
     dispatch({
       type: SET_WEATHER_INFO,
@@ -35,9 +33,15 @@ const CitiesList: React.FC<citiesListProps> = ({ isActive }) => {
             <li
               key={index}
               className="nav-list-item"
-              onClick={() => setWeatherLocation(coord.lat, coord.lon)}
+              onClick={() => {
+                setWeatherLocation(coord.lat, coord.lon);
+                closeNav();
+              }}
             >
-              {item.city}, {item.country}
+              <p>
+                {item.city}, {item.country}{" "}
+              </p>
+              <DeleteIcon city={item.city} country={item.country} />
             </li>
           );
         })}

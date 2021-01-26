@@ -1,3 +1,8 @@
+export interface citiesListProps {
+  isActive: boolean;
+  closeNav: () => void;
+}
+
 export interface citiesListType {
   locationsList: {
     city: string;

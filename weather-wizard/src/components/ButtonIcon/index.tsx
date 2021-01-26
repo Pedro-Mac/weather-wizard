@@ -9,8 +9,8 @@ interface buttonProps {
 
 const Button: React.FC<buttonProps> = ({ icon, alt }) => {
   return (
-    <button>
-      <img src={icon} alt={alt} />
+    <button className="button-icon">
+      <img className="icon" src={icon} alt={alt} />
     </button>
   );
 };
