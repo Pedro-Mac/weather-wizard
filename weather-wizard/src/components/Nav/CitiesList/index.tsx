@@ -40,7 +40,11 @@ const CitiesList: React.FC<citiesListProps> = ({ isActive, closeNav }) => {
                 {item.city}, {item.country}{" "}
               </p>
               {index !== 0 && (
-                <DeleteIcon city={item.city} country={item.country} />
+                <DeleteIcon
+                  city={item.city}
+                  country={item.country}
+                  closeNav={closeNav}
+                />
               )}
             </li>
           );
