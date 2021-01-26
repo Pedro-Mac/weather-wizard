@@ -1,18 +1,17 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import deleteImg from "../../../../images/svg/delete.svg";
+import { useDispatch, useSelector, batch } from "react-redux";
 
 import "./style.scss";
-
+//types
 import { deleteIconProps } from "./types";
-
+import { stateType } from "./types";
+//redux actions
 import { SET_WEATHER_INFO } from "../../../../redux/location/actions";
 import { REMOVE_LOCATION } from "../../../../redux/locationsList/actions";
-
-import { stateType } from "./types";
-
+//services
 import { getWeatherInfoByCoordinates } from "../../../../services/weather-by-coordinates/getWeatherInfo";
+//images
+import deleteImg from "../../../../images/svg/delete.svg";
 
 const DeleteIcon: React.FC<deleteIconProps> = ({ city, country, closeNav }) => {
   const dispatch = useDispatch();
@@ -30,9 +29,13 @@ const DeleteIcon: React.FC<deleteIconProps> = ({ city, country, closeNav }) => {
       const { lat, lon } = locationsList[0].coord;
       const weatherInfo = await getWeatherInfoByCoordinates(lat, lon);
 
-      dispatch({ type: SET_WEATHER_INFO, payload: weatherInfo });
+      batch(() => {
+        dispatch({ type: SET_WEATHER_INFO, payload: weatherInfo });
+        dispatch({ type: REMOVE_LOCATION, payload: { city, country } });
+      });
+    } else {
+      dispatch({ type: REMOVE_LOCATION, payload: { city, country } });
     }
-    dispatch({ type: REMOVE_LOCATION, payload: { city, country } });
   };
 
   const handleClick = () => {
