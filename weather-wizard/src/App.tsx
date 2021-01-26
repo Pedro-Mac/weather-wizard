@@ -26,7 +26,6 @@ const App: React.FC = () => {
 
       batch(() => {
         dispatch({ type: SET_WEATHER_INFO, payload: weather });
-
         dispatch({
           type: UPDATE_DEFAULT_LOCATION,
           payload: { coord, city: name, country: sys.country },
@@ -46,6 +45,8 @@ const App: React.FC = () => {
       handleSuccessfulUserLocation,
       handleUnsuccessfulUserLocation,
     );
+
+    console.log("stored list", window.localStorage.getItem("locationsList"));
   }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation]);
   return (
     <div className="App">

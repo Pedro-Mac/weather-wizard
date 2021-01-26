@@ -16,6 +16,8 @@ export const getWeatherIcon = (weather: string) => {
       return mistImg;
     case "Rain":
       return rainImg;
+    case "Drizzle":
+      return rainImg;
     default:
       return;
   }

@@ -6,13 +6,18 @@ import {
 
 import { actionType, itemType } from "./types";
 
+import { setItemLocal } from "./helpers/handleLocalStorage";
+
 export const locationsListReducer = (
   state: itemType[] = [],
   action: actionType,
 ) => {
+  const removeDefaultLocation = state.filter((item, index) => index !== 0);
   switch (action.type) {
     case ADD_LOCATION:
       const newLocation = action.payload;
+      //handles localStorage update
+      setItemLocal("locationsList", [...removeDefaultLocation, newLocation]);
 
       return [...state, newLocation];
 
@@ -20,6 +25,8 @@ export const locationsListReducer = (
       const defaultLocation = action.payload;
       //changes the user's location in the list of locations
       state[0] = defaultLocation;
+      //handles localStorage update
+      setItemLocal("locationsList", [...removeDefaultLocation]);
       return [...state];
     case REMOVE_LOCATION:
       const filteredLocationsList = state.filter(
