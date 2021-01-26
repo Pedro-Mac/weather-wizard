@@ -9,12 +9,12 @@ export const locationsListReducer = (state: [] = [], action: actionType) => {
 
       return [...state, newLocation];
     case REMOVE_LOCATION:
-      const removeLocation = state.filter(
+      const filteredLocationsList = state.filter(
         (item: itemType) =>
           item.city !== action.payload.city &&
           item.country !== action.payload.country,
       );
-      return removeLocation;
+      return filteredLocationsList;
     default:
       return state;
   }

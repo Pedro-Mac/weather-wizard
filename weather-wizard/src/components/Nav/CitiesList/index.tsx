@@ -30,18 +30,18 @@ const CitiesList: React.FC<citiesListProps> = ({ isActive, closeNav }) => {
         {cities.map((item, index) => {
           const { coord } = item;
           return (
-            <li
-              key={index}
-              className="nav-list-item"
-              onClick={() => {
-                setWeatherLocation(coord.lat, coord.lon);
-                closeNav();
-              }}
-            >
-              <p>
+            <li key={index} className="nav-list-item">
+              <p
+                onClick={() => {
+                  setWeatherLocation(coord.lat, coord.lon);
+                  closeNav();
+                }}
+              >
                 {item.city}, {item.country}{" "}
               </p>
-              <DeleteIcon city={item.city} country={item.country} />
+              {index !== 0 && (
+                <DeleteIcon city={item.city} country={item.country} />
+              )}
             </li>
           );
         })}
