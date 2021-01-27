@@ -1,8 +1,4 @@
-import {
-  ADD_LOCATION,
-  REMOVE_LOCATION,
-  UPDATE_DEFAULT_LOCATION,
-} from "./actions";
+import { ADD_LOCATION, REMOVE_LOCATION } from "./actions";
 
 import { actionType, itemType } from "./types";
 
