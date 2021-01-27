@@ -9,4 +9,5 @@ export interface stateType {
     currentWeather: { name: string; sys: { country: string } };
   };
   locationsList: { coord: { lat: number; lon: number } }[];
+  defaultLocation: { coord: { lat: number; lon: number } };
 }

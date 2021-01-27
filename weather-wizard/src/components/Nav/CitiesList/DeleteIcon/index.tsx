@@ -16,7 +16,7 @@ import deleteImg from "../../../../images/svg/delete.svg";
 const DeleteIcon: React.FC<deleteIconProps> = ({ city, country, closeNav }) => {
   const dispatch = useDispatch();
 
-  const { locationsList, selectedLocation } = useSelector(
+  const { locationsList, selectedLocation, defaultLocation } = useSelector(
     (state: stateType) => state,
   );
 
@@ -26,8 +26,9 @@ const DeleteIcon: React.FC<deleteIconProps> = ({ city, country, closeNav }) => {
       city === selectedLocation.currentWeather.name &&
       country === selectedLocation.currentWeather.sys.country
     ) {
-      const { lat, lon } = locationsList[0].coord;
+      const { lat, lon } = defaultLocation.coord;
       const weatherInfo = await getWeatherInfoByCoordinates(lat, lon);
+      console.log(weatherInfo);
 
       batch(() => {
         dispatch({ type: SET_WEATHER_INFO, payload: weatherInfo });

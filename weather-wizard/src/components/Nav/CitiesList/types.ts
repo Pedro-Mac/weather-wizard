@@ -3,10 +3,13 @@ export interface citiesListProps {
   closeNav: () => void;
 }
 
+interface cityItem {
+  city: string;
+  country: string;
+  coord: { lat: number; lon: number };
+}
+
 export interface citiesListType {
-  locationsList: {
-    city: string;
-    country: string;
-    coord: { lat: number; lon: number };
-  }[];
+  locationsList: cityItem[];
+  defaultLocation: cityItem;
 }
