@@ -17,7 +17,6 @@ export const locationsListReducer = (
 
       return [...state, newLocation];
     case REMOVE_LOCATION:
-      console.log("this is the payload", action.payload);
       const filteredLocationsList = state.filter((item: itemType) => {
         return (
           item.city !== action.payload.item.city ||
@@ -25,7 +24,7 @@ export const locationsListReducer = (
             item.country !== action.payload.item.country)
         );
       });
-      setItemLocal("locationsList", [...filteredLocationsList]);
+      setItemLocal("locationsList", [filteredLocationsList]);
       return filteredLocationsList;
     case SET_LIST_FROM_LOCAL:
       return [...action.payload.localList];

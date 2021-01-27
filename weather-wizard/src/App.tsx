@@ -51,7 +51,7 @@ const App: React.FC = () => {
     const userLocationsListJSON =
       window.localStorage.getItem("locationsList") || "[]";
     const parsedUserLocationList = JSON.parse(userLocationsListJSON);
-    // console.log("parsed array", parsedUserLocationList);
+
     dispatch({
       type: SET_LIST_FROM_LOCAL,
       payload: { localList: parsedUserLocationList },
