@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+//types
 import { weatherInfoType } from "../types";
+//helpers
 import { modifyDate } from "./helpers/getDate";
 import { getWeatherIcon } from "./helpers/getWeatherIcon";
 

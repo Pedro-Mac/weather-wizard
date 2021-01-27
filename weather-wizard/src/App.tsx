@@ -15,6 +15,8 @@ import Nav from "./components/Nav";
 //styles
 import "./App.scss";
 
+import { LOCATIONS_LIST } from "./globalConstants";
+
 const App: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -49,7 +51,7 @@ const App: React.FC = () => {
     );
 
     const userLocationsListJSON =
-      window.localStorage.getItem("locationsList") || "[]";
+      window.localStorage.getItem(LOCATIONS_LIST) || "[]";
     const parsedUserLocationList = JSON.parse(userLocationsListJSON);
 
     dispatch({

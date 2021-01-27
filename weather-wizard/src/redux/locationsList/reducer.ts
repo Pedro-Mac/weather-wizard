@@ -4,6 +4,8 @@ import { actionType, itemType } from "./types";
 
 import { setItemLocal } from "./helpers/handleLocalStorage";
 
+import { LOCATIONS_LIST } from "../../globalConstants";
+
 export const locationsListReducer = (
   state: itemType[] = [],
   action: actionType,
@@ -13,7 +15,7 @@ export const locationsListReducer = (
     case ADD_LOCATION:
       const newLocation = action.payload;
       //handles localStorage update
-      setItemLocal("locationsList", [...removeDefaultLocation, newLocation]);
+      setItemLocal(LOCATIONS_LIST, [...removeDefaultLocation, newLocation]);
 
       return [...state, newLocation];
     case REMOVE_LOCATION:
@@ -24,7 +26,7 @@ export const locationsListReducer = (
             item.country !== action.payload.item.country)
         );
       });
-      setItemLocal("locationsList", [filteredLocationsList]);
+      setItemLocal(LOCATIONS_LIST, [...filteredLocationsList]);
       return filteredLocationsList;
     case SET_LIST_FROM_LOCAL:
       return [...action.payload.localList];
