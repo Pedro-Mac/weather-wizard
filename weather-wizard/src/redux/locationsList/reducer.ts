@@ -23,8 +23,9 @@ export const locationsListReducer = (
     case REMOVE_LOCATION:
       const filteredLocationsList = state.filter(
         (item: itemType) =>
-          item.city !== action.payload.city &&
-          item.country !== action.payload.country,
+          item.city !== action.payload.city ||
+          (item.city === action.payload.city &&
+            item.country !== action.payload.country),
       );
       return filteredLocationsList;
     default:
