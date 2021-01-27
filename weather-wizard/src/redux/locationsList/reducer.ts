@@ -10,12 +10,11 @@ export const locationsListReducer = (
   state: itemType[] = [],
   action: actionType,
 ) => {
-  const removeDefaultLocation = state.filter((item, index) => index !== 0);
   switch (action.type) {
     case ADD_LOCATION:
       const newLocation = action.payload;
       //handles localStorage update
-      setItemLocal(LOCATIONS_LIST, [...removeDefaultLocation, newLocation]);
+      setItemLocal(LOCATIONS_LIST, [...state, newLocation]);
 
       return [...state, newLocation];
     case REMOVE_LOCATION:
