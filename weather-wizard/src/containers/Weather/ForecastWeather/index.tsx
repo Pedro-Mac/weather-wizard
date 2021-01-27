@@ -14,7 +14,7 @@ const ForecastWeather = () => {
 
   return (
     <>
-      {weatherList && (
+      {(weatherList && (
         <article className="forecast-weather-container">
           {weatherList
             .filter((item, index) => index !== 0)
@@ -30,7 +30,7 @@ const ForecastWeather = () => {
               );
             })}
         </article>
-      )}
+      )) || <article className="forecast-weather-container"></article>}
     </>
   );
 };

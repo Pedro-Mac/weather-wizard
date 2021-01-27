@@ -16,7 +16,7 @@ const CurrentWeather: React.FC = () => {
 
   return (
     <>
-      {weatherStateInfo && weatherStateInfo.name && (
+      {(weatherStateInfo && weatherStateInfo.name && (
         <article className="container-weather-main">
           <section className="containter-weather-date">
             <div className="weather-location">
@@ -52,7 +52,7 @@ const CurrentWeather: React.FC = () => {
             </ul>
           </section>
         </article>
-      )}
+      )) || <article className="container-weather-main"></article>}
     </>
   );
 };
