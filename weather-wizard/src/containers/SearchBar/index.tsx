@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useDispatch, batch } from "react-redux";
 
-import { SET_WEATHER_INFO } from "../../redux/location/actions";
+import { SET_WEATHER_INFO } from "../../redux/selectedLocation/actions";
 import { ADD_LOCATION } from "../../redux/locationsList/actions";
 
 import {

@@ -6,7 +6,7 @@ import "./style.scss";
 import { deleteIconProps } from "./types";
 import { stateType } from "./types";
 //redux actions
-import { SET_WEATHER_INFO } from "../../../../redux/location/actions";
+import { SET_WEATHER_INFO } from "../../../../redux/selectedLocation/actions";
 import { REMOVE_LOCATION } from "../../../../redux/locationsList/actions";
 //services
 import { getWeatherInfoByCoordinates } from "../../../../services/weather-by-coordinates/getWeatherInfo";

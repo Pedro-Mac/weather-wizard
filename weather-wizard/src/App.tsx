@@ -3,8 +3,8 @@ import { useDispatch, batch } from "react-redux";
 
 import { getWeatherInfoByCoordinates } from "./services/weather-by-coordinates/getWeatherInfo";
 
-import { SET_WEATHER_INFO } from "./redux/location/actions";
-import { UPDATE_DEFAULT_LOCATION } from "./redux/locationsList/actions";
+import { SET_WEATHER_INFO } from "./redux/selectedLocation/actions";
+import { SET_USER_LOCATION } from "./redux/defaultLocation/actions";
 
 import CurrentWeather from "./containers/Weather/CurrentWeather";
 import ForecastWeather from "./containers/Weather/ForecastWeather";
@@ -27,7 +27,7 @@ const App: React.FC = () => {
       batch(() => {
         dispatch({ type: SET_WEATHER_INFO, payload: weather });
         dispatch({
-          type: UPDATE_DEFAULT_LOCATION,
+          type: SET_USER_LOCATION,
           payload: { coord, city: name, country: sys.country },
         });
       });

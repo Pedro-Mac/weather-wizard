@@ -20,14 +20,6 @@ export const locationsListReducer = (
       setItemLocal("locationsList", [...removeDefaultLocation, newLocation]);
 
       return [...state, newLocation];
-
-    case UPDATE_DEFAULT_LOCATION:
-      const defaultLocation = action.payload;
-      //changes the user's location in the list of locations
-      state[0] = defaultLocation;
-      //handles localStorage update
-      setItemLocal("locationsList", [...removeDefaultLocation]);
-      return [...state];
     case REMOVE_LOCATION:
       const filteredLocationsList = state.filter(
         (item: itemType) =>

@@ -7,7 +7,7 @@ import { getWeatherInfoByCoordinates } from "../../../services/weather-by-coordi
 
 import { citiesListType, citiesListProps } from "./types";
 
-import { SET_WEATHER_INFO } from "../../../redux/location/actions";
+import { SET_WEATHER_INFO } from "../../../redux/selectedLocation/actions";
 
 import "./style.scss";
 
