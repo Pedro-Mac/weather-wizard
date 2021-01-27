@@ -31,10 +31,13 @@ const DeleteIcon: React.FC<deleteIconProps> = ({ city, country, closeNav }) => {
 
       batch(() => {
         dispatch({ type: SET_WEATHER_INFO, payload: weatherInfo });
-        dispatch({ type: REMOVE_LOCATION, payload: { city, country } });
+        dispatch({
+          type: REMOVE_LOCATION,
+          payload: { item: { city, country } },
+        });
       });
     } else {
-      dispatch({ type: REMOVE_LOCATION, payload: { city, country } });
+      dispatch({ type: REMOVE_LOCATION, payload: { item: { city, country } } });
     }
   };
 

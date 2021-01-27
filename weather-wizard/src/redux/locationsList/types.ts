@@ -1,6 +1,6 @@
 export interface actionType {
   type: string;
-  payload: itemType;
+  payload: { item: itemType; localList: itemType[] };
 }
 
 export interface itemType {

@@ -1,4 +1,4 @@
-import { ADD_LOCATION, REMOVE_LOCATION } from "./actions";
+import { ADD_LOCATION, REMOVE_LOCATION, SET_LIST_FROM_LOCAL } from "./actions";
 
 import { actionType, itemType } from "./types";
 
@@ -17,13 +17,17 @@ export const locationsListReducer = (
 
       return [...state, newLocation];
     case REMOVE_LOCATION:
-      const filteredLocationsList = state.filter(
-        (item: itemType) =>
-          item.city !== action.payload.city ||
-          (item.city === action.payload.city &&
-            item.country !== action.payload.country),
-      );
+      console.log("this is the payload", action.payload);
+      const filteredLocationsList = state.filter((item: itemType) => {
+        return (
+          item.city !== action.payload.item.city ||
+          (item.city === action.payload.item.city &&
+            item.country !== action.payload.item.country)
+        );
+      });
       return filteredLocationsList;
+    case SET_LIST_FROM_LOCAL:
+      return [...action.payload.localList];
     default:
       return state;
   }

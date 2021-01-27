@@ -1,16 +1,18 @@
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, batch } from "react-redux";
-
+// http request handlers
 import { getWeatherInfoByCoordinates } from "./services/weather-by-coordinates/getWeatherInfo";
-
+// redux actions
 import { SET_WEATHER_INFO } from "./redux/selectedLocation/actions";
 import { SET_USER_LOCATION } from "./redux/defaultLocation/actions";
+import { SET_LIST_FROM_LOCAL } from "./redux/locationsList/actions";
 
+//components
 import CurrentWeather from "./containers/Weather/CurrentWeather";
 import ForecastWeather from "./containers/Weather/ForecastWeather";
 import SearchBar from "./containers/SearchBar";
 import Nav from "./components/Nav";
-
+//styles
 import "./App.scss";
 
 const App: React.FC = () => {
@@ -46,8 +48,15 @@ const App: React.FC = () => {
       handleUnsuccessfulUserLocation,
     );
 
-    console.log("stored list", window.localStorage.getItem("locationsList"));
-  }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation]);
+    const userLocationsListJSON =
+      window.localStorage.getItem("locationsList") || "[]";
+    const parsedUserLocationList = JSON.parse(userLocationsListJSON);
+    // console.log("parsed array", parsedUserLocationList);
+    dispatch({
+      type: SET_LIST_FROM_LOCAL,
+      payload: { localList: parsedUserLocationList },
+    });
+  }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation, dispatch]);
   return (
     <div className="App">
       <Nav />
