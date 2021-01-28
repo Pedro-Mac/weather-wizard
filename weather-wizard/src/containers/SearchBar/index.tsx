@@ -43,7 +43,7 @@ const SearchBar = () => {
           country: sys.country,
         });
         if (locationRepeats) {
-          setReqError("This locations is already in your list");
+          setReqError("This location is already in your list");
           return;
         }
         const forecastWeather = await getForecastWeatherByCoordinates(
@@ -84,7 +84,13 @@ const SearchBar = () => {
           onChange={handleUserInput}
           placeholder="Search another city"
         />
-        <ButtonIcon icon={arrowIcon} alt="arrow" className="icon-submit-form" />
+        <div className="icon-submit-container">
+          <ButtonIcon
+            icon={arrowIcon}
+            alt="arrow"
+            className="icon-submit-form"
+          />
+        </div>
       </form>
       {reqError && <Error reqError={reqError} />}
     </>

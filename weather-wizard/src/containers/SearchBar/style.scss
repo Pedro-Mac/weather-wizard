@@ -30,8 +30,22 @@
     }
   }
 
-  .icon-submit-form {
+  .icon-submit-container {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 1rem;
+    padding: 0.25rem;
+    border-radius: 50%;
+
+    background-color: rgb(19, 20, 36);
+
+    .icon-submit-form {
+      cursor: pointer;
+
+      background-color: rgb(19, 20, 36);
+    }
   }
 }
 

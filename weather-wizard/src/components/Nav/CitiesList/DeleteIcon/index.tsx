@@ -42,12 +42,12 @@ const DeleteIcon: React.FC<deleteIconProps> = ({ city, country }) => {
   };
 
   return (
-    <img
-      src={deleteImg}
-      alt={`delete ${city}`}
-      className="delete-icon"
+    <div
+      className="delete-icon-container"
       onClick={() => deleteLocation(city, country)}
-    />
+    >
+      <img src={deleteImg} alt={`delete ${city}`} className="delete-icon" />
+    </div>
   );
 };
 

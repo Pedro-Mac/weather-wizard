@@ -7,6 +7,8 @@ import { SET_WEATHER_INFO } from "../../../../redux/selectedLocation/actions";
 
 import { getWeatherInfoByCoordinates } from "../../../../services/weather-by-coordinates/getWeatherInfo";
 
+import "./style.scss";
+
 interface listItemProps {
   city: string;
   country: string;
