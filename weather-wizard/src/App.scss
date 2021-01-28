@@ -5,9 +5,10 @@
 }
 
 .App {
-  background: linear-gradient(-25deg, #10132c, #77d1dd);
   overflow: auto;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  max-width: 60rem;
+  margin: 0 auto;
 }
