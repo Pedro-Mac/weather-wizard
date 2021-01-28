@@ -84,13 +84,8 @@ const SearchBar = () => {
           onChange={handleUserInput}
           placeholder="Search another city"
         />
-        <div className="icon-submit-container">
-          <ButtonIcon
-            icon={arrowIcon}
-            alt="arrow"
-            className="icon-submit-form"
-          />
-        </div>
+
+        <ButtonIcon icon={arrowIcon} alt="arrow" className="icon-submit-form" />
       </form>
       {reqError && <Error reqError={reqError} />}
     </>
