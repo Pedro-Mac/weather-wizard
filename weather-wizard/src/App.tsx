@@ -31,6 +31,7 @@ const App: React.FC = () => {
         lat = location.coords.latitude;
         lon = location.coords.longitude;
       } else {
+        //set coordinates to Leiria
         lat = 39.74362;
         lon = -8.80705;
       }
