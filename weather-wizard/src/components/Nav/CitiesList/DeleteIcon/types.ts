@@ -1,7 +1,6 @@
 export interface deleteIconProps {
   city: string;
   country: string;
-  closeNav: () => void;
 }
 
 export interface stateType {

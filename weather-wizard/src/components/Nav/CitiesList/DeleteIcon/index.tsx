@@ -13,7 +13,7 @@ import { getWeatherInfoByCoordinates } from "../../../../services/weather-by-coo
 //images
 import deleteImg from "../../../../images/svg/delete.svg";
 
-const DeleteIcon: React.FC<deleteIconProps> = ({ city, country, closeNav }) => {
+const DeleteIcon: React.FC<deleteIconProps> = ({ city, country }) => {
   const dispatch = useDispatch();
 
   const { selectedLocation, defaultLocation } = useSelector(
@@ -41,17 +41,12 @@ const DeleteIcon: React.FC<deleteIconProps> = ({ city, country, closeNav }) => {
     }
   };
 
-  const handleClick = () => {
-    deleteLocation(city, country);
-    closeNav();
-  };
-
   return (
     <img
       src={deleteImg}
       alt={`delete ${city}`}
       className="delete-icon"
-      onClick={handleClick}
+      onClick={() => deleteLocation(city, country)}
     />
   );
 };

@@ -1,6 +1,8 @@
+@import "../../../styles/master";
+
 .nav-list-container {
   position: absolute;
-  background-color: aliceblue;
+  background-color: $secondary-color;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -8,6 +10,7 @@
   transform: translateX(100vw);
   display: flex;
   flex-direction: column;
+  color: $primary-color;
 
   .nav-list-group {
     list-style: none;
@@ -16,7 +19,7 @@
 
     .nav-list-item {
       font-size: 1.5rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       display: flex;
       justify-content: space-between;
     }

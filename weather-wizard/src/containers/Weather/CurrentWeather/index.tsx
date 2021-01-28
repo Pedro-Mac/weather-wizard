@@ -6,8 +6,6 @@ import WeatherInfo from "./WeatherInfo";
 
 import { weatherInfoType } from "../types";
 
-import { getWeatherIcon } from "./helpers/getWeatherIcon";
-
 import "./style.scss";
 
 const CurrentWeather: React.FC = () => {

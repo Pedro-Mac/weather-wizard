@@ -5,6 +5,9 @@
  * @site https://jonsuh.com/hamburgers
  * @link https://github.com/jonsuh/hamburgers
  */
+
+@import "../../../styles/master";
+
 .hamburger {
   z-index: 10000;
   display: inline-block;
@@ -34,7 +37,7 @@
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-  background-color: #000;
+  background-color: $primary-color;
 }
 
 .hamburger-box {
