@@ -6,6 +6,8 @@ import { modifyDate } from "../helpers/getDate";
 
 import pinLocation from "../../../../images/svg/pin.svg";
 
+import "./style.scss";
+
 const WeatherLocation: React.FC<weatherLocationProps> = ({
   weatherStateInfo,
 }) => {
