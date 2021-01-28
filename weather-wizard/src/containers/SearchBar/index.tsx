@@ -5,10 +5,8 @@ import { useDispatch, batch } from "react-redux";
 import { SET_WEATHER_INFO } from "../../redux/selectedLocation/actions";
 import { ADD_LOCATION } from "../../redux/locationsList/actions";
 // http req handlers
-import {
-  getCurrentWeatherByCity,
-  getForecastWeatherByCity,
-} from "../../services/weather-by-city/getWeatherInfo";
+import { getCurrentWeatherByCity } from "../../services/weather-by-city/getWeatherInfo";
+import { getForecastWeatherByCoordinates } from "../../services/weather-by-coordinates/getWeatherInfo";
 //components
 import ButtonIcon from "../../components/ButtonIcon";
 import Error from "./Error";
@@ -40,15 +38,15 @@ const SearchBar = () => {
         const currentWeather = await getCurrentWeatherByCity(userInput);
         const { coord, name, sys } = currentWeather.data;
 
-        const repeats = checkRepeatedLocation({
+        const locationRepeats = checkRepeatedLocation({
           city: name,
           country: sys.country,
         });
-        if (repeats) {
+        if (locationRepeats) {
           setReqError("This locations is already in your list");
           return;
         }
-        const forecastWeather = await getForecastWeatherByCity(
+        const forecastWeather = await getForecastWeatherByCoordinates(
           coord.lat,
           coord.lon,
         );
