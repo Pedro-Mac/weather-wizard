@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-//types
-import { weatherInfoType } from "../types";
-//helpers
-import { modifyDate } from "./helpers/getDate";
-import { getWeatherIcon } from "./helpers/getWeatherIcon";
 
-import pinLocation from "../../../images/svg/pin.svg";
+import WeatherLocation from "./WeatherLocation";
+
+import { weatherInfoType } from "../types";
+
+import { getWeatherIcon } from "./helpers/getWeatherIcon";
 
 import "./style.scss";
 
@@ -19,15 +18,7 @@ const CurrentWeather: React.FC = () => {
     <>
       {(weatherStateInfo && weatherStateInfo.name && (
         <article className="container-weather-main">
-          <section className="containter-weather-date">
-            <div className="weather-location">
-              <img src={pinLocation} alt="pin" />
-              <h2 className="location-subtle">
-                {weatherStateInfo.name}, {weatherStateInfo.sys.country}
-              </h2>
-            </div>
-            <p className="date">{modifyDate(weatherStateInfo.dt * 1000)}</p>
-          </section>
+          <WeatherLocation weatherStateInfo={weatherStateInfo} />
           <section className="containter-weather-info">
             <div className="weather-current">
               <img

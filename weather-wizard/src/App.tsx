@@ -54,6 +54,7 @@ const App: React.FC = () => {
       window.localStorage.getItem(LOCATIONS_LIST) || "[]";
     const parsedUserLocationList = JSON.parse(userLocationsListJSON);
 
+    // populate state with the list of locations from user's device
     dispatch({
       type: SET_LIST_FROM_LOCAL,
       payload: { localList: parsedUserLocationList },
