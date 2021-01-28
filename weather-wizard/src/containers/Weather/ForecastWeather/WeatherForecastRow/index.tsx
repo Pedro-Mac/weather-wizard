@@ -4,7 +4,7 @@ import { WeatherForecastRowProps } from "./types";
 
 import { getHumidityIcon } from "./helpers/humidity";
 import { getWeekDay } from "./helpers/weekday";
-import { getWeatherIcon } from "../../containers/Weather/CurrentWeather/helpers/getWeatherIcon";
+import { getWeatherIcon } from "../../CurrentWeather/helpers/getWeatherIcon";
 
 import "./style.scss";
 

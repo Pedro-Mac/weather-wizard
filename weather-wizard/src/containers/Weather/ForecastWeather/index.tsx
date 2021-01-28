@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { weatherInfoType } from "../types";
 
-import WeatherForecastRow from "../../../components/WeatherForecastRow";
+import WeatherForecastRow from "./WeatherForecastRow";
 
 import "./style.scss";
 
@@ -16,6 +16,7 @@ const ForecastWeather = () => {
     <>
       {(weatherList && (
         <article className="forecast-weather-container">
+          {/*Filtering to remove "today" from the forecast */}
           {weatherList
             .filter((item, index) => index !== 0)
             .map((item, index) => {
