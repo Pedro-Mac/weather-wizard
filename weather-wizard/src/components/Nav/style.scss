@@ -1,6 +1,7 @@
 .navbar-container {
   padding-top: 2rem;
   position: relative;
+  z-index: 100;
 
   .navbar {
     display: flex;

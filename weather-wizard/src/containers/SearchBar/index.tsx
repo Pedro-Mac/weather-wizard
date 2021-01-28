@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { useDispatch, batch } from "react-redux";
 
 // redux actions
@@ -18,7 +18,11 @@ import "./style.scss";
 //helpers
 import { checkRepeatedLocation } from "./helpers/checkLocation";
 
-const SearchBar = () => {
+interface searchBarProps {
+  isActive: boolean;
+}
+
+const SearchBar: React.FC<searchBarProps> = ({ isActive }) => {
   const dispatch = useDispatch();
   const [userInput, setUserInput] = useState<string>("");
   const [reqError, setReqError] = useState<string>("");
@@ -27,6 +31,13 @@ const SearchBar = () => {
     const { value } = event.target;
     setUserInput(value);
   };
+
+  useEffect(() => {
+    if (!isActive) {
+      setReqError("");
+      setUserInput("");
+    }
+  }, [isActive]);
 
   const handleFormSubmission = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -75,7 +86,10 @@ const SearchBar = () => {
 
   return (
     <>
-      <form className="searchbar-form" onSubmit={handleFormSubmission}>
+      <form
+        className={`searchbar-form ${isActive ? "isActive" : ""}`}
+        onSubmit={handleFormSubmission}
+      >
         <img className="search-icon" src={searchIcon} alt="lupe" />
         <input
           className="searchbar-input"

@@ -13,6 +13,7 @@ import ForecastWeather from "./containers/Weather/ForecastWeather";
 import SearchBar from "./containers/SearchBar";
 import Nav from "./components/Nav";
 import ErrorMessage from "./components/ErrorMessage";
+import ButtonAdd from "./components/ButtonAdd";
 //styles
 import "./App.scss";
 
@@ -21,6 +22,11 @@ import { LOCATIONS_LIST } from "./globalConstants";
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const [reqError, setReqError] = useState<string>("");
+  const [searchIsActive, setSearchIsActive] = useState<boolean>(false);
+
+  const toggleSearchingBar = () => {
+    setSearchIsActive((prevState) => !prevState);
+  };
 
   const handleUserLocationReq = useCallback(
     async (location) => {
@@ -75,9 +81,10 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Nav />
-      <SearchBar />
+      <SearchBar isActive={searchIsActive} />
       <CurrentWeather />
       <ForecastWeather />
+      <ButtonAdd handleToggleSearch={toggleSearchingBar} />
       {reqError && <ErrorMessage message={reqError} />}
     </div>
   );
