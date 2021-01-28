@@ -22,11 +22,19 @@ const App: React.FC = () => {
   const dispatch = useDispatch();
   const [reqError, setReqError] = useState<string>("");
 
-  const handleSuccessfulUserLocation = useCallback(
+  const handleUserLocationReq = useCallback(
     async (location) => {
       if (reqError) setReqError("");
-      const lat = location.coords.latitude;
-      const lon = location.coords.longitude;
+      let lat: number;
+      let lon: number;
+      if (location.coords) {
+        lat = location.coords.latitude;
+        lon = location.coords.longitude;
+      } else {
+        lat = 39.74362;
+        lon = -8.80705;
+      }
+
       try {
         const weather = await getWeatherInfoByCoordinates(lat, lon);
         const { coord, name, sys } = weather.current;
@@ -47,29 +55,10 @@ const App: React.FC = () => {
     [dispatch, reqError],
   );
 
-  const handleUnsuccessfulUserLocation = useCallback(async () => {
-    if (reqError) setReqError("");
-    try {
-      const weather = await getWeatherInfoByCoordinates(39.74362, -8.80705);
-      const { coord, name, sys } = weather.current;
-      batch(() => {
-        dispatch({ type: SET_WEATHER_INFO, payload: weather });
-        dispatch({
-          type: SET_USER_LOCATION,
-          payload: { coord, city: name, country: sys.country },
-        });
-      });
-    } catch (error) {
-      setReqError(
-        "There was problem communicating with the server, please reload the page",
-      );
-    }
-  }, [dispatch, reqError]);
-
   useEffect(() => {
     window.navigator.geolocation.getCurrentPosition(
-      handleSuccessfulUserLocation,
-      handleUnsuccessfulUserLocation,
+      handleUserLocationReq,
+      handleUserLocationReq,
     );
 
     const userLocationsListJSON =
@@ -81,7 +70,7 @@ const App: React.FC = () => {
       type: SET_LIST_FROM_LOCAL,
       payload: { localList: parsedUserLocationList },
     });
-  }, [handleSuccessfulUserLocation, handleUnsuccessfulUserLocation, dispatch]);
+  }, [handleUserLocationReq, dispatch]);
   return (
     <div className="App">
       <Nav />
